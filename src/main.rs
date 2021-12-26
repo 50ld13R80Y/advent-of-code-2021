@@ -1,3 +1,6 @@
+mod day1;
+
 fn main() {
-    println!("Hello, world!");
+    day1::day1a().unwrap();
+    day1::day1b().unwrap();
 }
