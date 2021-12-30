@@ -1,16 +1,12 @@
 use std::fs::File;
-use std::io::{BufRead, BufReader, Error, ErrorKind, Read};
+use std::io::Error;
 
-//Read from buffer and convert to vector
-fn read<R: Read>(io: R) -> Result<Vec<u64>, Error> {
-    let br = BufReader::new(io);
-    br.lines()
-        .map(|line| line.and_then(|v| v.parse().map_err(|e| Error::new(ErrorKind::InvalidData, e))))
-        .collect()
-}
+use crate::read_files;
 
 pub fn day1a() -> Result<(), Error> {
-    let vec = read(File::open("./src/day1")?)?;
+    //let temp = read_files::read("./file_input/day1.txt");
+    let vec = read_files::file_to_vec_uint(File::open("./file_input/day1.txt")?)?;
+
     // use `vec` for whatever
     let mut increased = 0;
     //Day 1A
@@ -26,7 +22,7 @@ pub fn day1a() -> Result<(), Error> {
 }
 
 pub fn day1b() -> Result<(), Error> {
-    let vec = read(File::open("./src/day1")?)?;
+    let vec = read_files::file_to_vec_uint(File::open("./file_input/day1.txt")?)?;
     // use `vec` for whatever
     let mut increased = 0;
     //Day 1A
